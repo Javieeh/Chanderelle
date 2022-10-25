@@ -10,4 +10,4 @@
 ###### -Daniel Maseda Padilla, d.maseda.2020@alumnos.urjc.es, DMasedaP
 ###### -Javier de las Peñas Fernández, j.delaspenas.2020@alumnos.urjc.es, Javieeh
 ### Trello
-###### https://trello.com/b/Fa8Oqzbg/fase-1
+###### https://trello.com/w/chanderelle
