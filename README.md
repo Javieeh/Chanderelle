@@ -1,6 +1,7 @@
 # Chanderelle
 ## Proyecto Juegos en red - GDDV - Grupo D
 ### Descripción de la temática del juego
+###### Chanderelle es un juego de plataforma de peleas 1 vs 1 en 2D. Cada jugador podrá escoger entre distintas setas, que han cobrado vida debido a una negligencia en un laboratorio y a una serie de catastróficos acontecimientos y se ven obligadas a pelear entre ellas para seguir existiendo.
 ### Integrantes del equipo de desarrollo:
 ###### -Jaime Hereza Niño, j.hereza.2020@alumnos.urjc.es, JimyHN
 ###### -Lucas Andosilla Herráiz, l.andosilla.2019@alumnos.urjc.es, LucasAH9
@@ -8,3 +9,5 @@
 ###### -Laura Vázquez Pereda, l.vazquezp.2020@alumnos.urjc.es, lauravazquezz
 ###### -Daniel Maseda Padilla, d.maseda.2020@alumnos.urjc.es, DMasedaP
 ###### -Javier de las Peñas Fernández, j.delaspenas.2020@alumnos.urjc.es, Javieeh
+### Trello
+###### https://trello.com/b/Fa8Oqzbg/fase-1
