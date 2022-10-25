@@ -1,5 +1,5 @@
 # Chanderelle
-## Proyecto Juegos en red - GDDV - Grupo D
+
 ### Descripción de la temática del juego
 ###### Chanderelle es un juego de plataforma de peleas 1 vs 1 en 2D. Cada jugador podrá escoger entre distintas setas, que han cobrado vida debido a una negligencia en un laboratorio y a una serie de catastróficos acontecimientos y se ven obligadas a pelear entre ellas para seguir existiendo.
 ### Integrantes del equipo de desarrollo:
