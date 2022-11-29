@@ -29,6 +29,8 @@
 ### DIAGRAMA DE ESCENAS
 ![Menu](/capturas/diagrama.png)
 ##### En este menú se muestra el desplazamiento que puede hacer el jugador entre las escenas. En primer lugar, desde el menú principal solo puede acceder al juego, desde el juego al menú de pausa, y al de victoria de cada jugador. Desde estos se puede acceder al menu principal otra vez.
+### DISEÑO
+##### Para el diseño del juego se han usado colores que podemos encontrar en profundos bosques y que inspiran tenebrosidad, como el verde oscuro o el morado. Además las setas diseñadas tienen formas que recuerdan a la humana, para intentar personificarlas. Los botones y letreros se han hecho en dorado para que destaquen entre el ambiente tenebroso. También se han añadido efectos como luciérnagas volando por la pantalla para darle dinamismo al escenario. 
 ### CONTROLES
 #### JUGADOR 1
 ##### Salto- W
