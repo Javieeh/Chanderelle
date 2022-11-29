@@ -12,4 +12,5 @@
 ### Trello
 ###### https://trello.com/w/chanderelle
 ### ESCENAS
-![Menu](/capturas/menu.png)
+![Menu](/capturas/menu.PNG)
+##### Se muestra el titulo del juego junto a un botón "jugar" con el que los jugadores comienzan la partida
