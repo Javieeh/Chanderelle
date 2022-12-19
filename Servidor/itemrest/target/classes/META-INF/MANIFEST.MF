@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Implementation-Title: itemrest
+Implementation-Version: 1.0.0
+Built-By: mica
+Implementation-Vendor-Id: es.codeurjc
+Build-Jdk: 1.8.0_72
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+
