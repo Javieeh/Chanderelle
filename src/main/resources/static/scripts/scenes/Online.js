@@ -11,9 +11,15 @@ class Online extends Phaser.Scene {
         this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
     }
     preload() {
+		
         this.load.html("form", "form.html");
+        this.load.image("background", "assets/chanderelle.png");
     }
     create() {
+		this.style = { font: "15px OCR A", fill: "#FFFFFF" };
+		this.fondo = this.add.image(400,300,'background').setDisplaySize(100,100).setDepth(5);
+        this.nameInput = this.add.dom(250, 150).createFromCache("form");
+        
         function showArrayMessage(message) {
             message.forEach(data => {
                 if (lastId < data.id) {
