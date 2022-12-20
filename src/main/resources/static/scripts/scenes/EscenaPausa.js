@@ -51,7 +51,7 @@ class EscenaPausa extends Phaser.Scene {
 
         this.botonDetectChat.on('pointerdown', function () {
             this.scene.scene.sleep('PauseScene');
-            this.scene.scene.launch('Online');
+            this.scene.scene.launch('Lobby');
         })
     }
 
