@@ -1,5 +1,8 @@
-var totales;
-var id;
+	//GLOBALES
+    var lastId = 0;
+    var uName = '';
+    var onChat = false;
+    
 class Online extends Phaser.Scene {
     constructor() {
         super({ key: 'Online' })
@@ -11,172 +14,174 @@ class Online extends Phaser.Scene {
         this.load.html("form", "form.html");
     }
     create() {
-        this.style = { font: "15px OCR A", fill: "#FFFFFF" };
-        this.add.text(10, 10, 'Para salir pulsa la barra espaciadora', this.style);
-        this.nameInput = this.add.dom(250, 150).createFromCache("form");
+        function showArrayMessage(message) {
+            message.forEach(data => {
+                if (lastId < data.id) {
+                    showMessageInHTML(data);
+                    lastId = data.id;
+                } 	// if end
+            }); //foreach end
+        }
 
-        this.message = this.add.text(100, 50, "Este es el chat", {
-            color: "#FFFFFF",
-            fontSize: 20,
-            fontStyle: "bold"
-        }).setOrigin(0.5);
-        setInterval(function loadChat() {
-            $('#info').empty();
+        function showMessage(message) {
+            showMessageInHTML(message);
+        }
+
+        function showMessageInHTML(data) {
+            // type
+            // 100 = mis mensajes, a la derecha
+            // 101 = otros mensajes, a la izquierda
+            // 200 = mensaje de entrada en el server
+            // 201 = mensaje de salida en el server
+
+            if (data.type == 200) {
+                $('.messages').append(
+                    '<div class="update">' +
+                    data.userName + ' has joined the lobby' +
+                    '</div>'
+                );
+            }
+            else if (data.type == 201) {
+                $('.messages').append(
+                    '<div class="update">' +
+                    data.userName + ' has left the lobby' +
+                    '</div>'
+                );
+            }
+            else if (data.type == 100 || data.userName == uName) {
+                $('.messages').append(
+                    ' <div class="message my-message">' +
+                    '<div>' +
+                    //Implementar message.userName
+                    '<div class="name">' + data.userName + '</div>' +
+                    '<div class="text">' + data.content + '</div>' +
+                    '</div>' +
+                    '</div>');
+            }
+            else if (data.type == 101) {
+                $('.messages').append(
+                    ' <div class="message other-message">' +
+                    '<div>' +
+                    //Implementar message.userName
+                    '<div class="name">' + data.userName + '</div>' +
+                    '<div class="text">' + data.content + '</div>' +
+                    '</div>' +
+                    '</div>');
+            }
+
+
+        }
+
+        //Create item in server
+        function postMessage(message) {
+            $.ajax({
+                method: "POST",
+                url: 'http://localhost:8080/messages',
+                data: JSON.stringify(message),
+                processData: false,
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            }).done(function (message) {
+
+                if (message.type == 101) {
+                    message.type = 100;
+                }
+                getMessage();
+            })
+        }
+
+        function getMessage() {
             $.ajax({
                 method: "GET",
-                url: window.location.href + '/lobby'
-            }).done(function (chat) {
-                for (var i = 0; i < chat.length; i++) {
-                    var style = '';
-                    $('#info').append(
-                        '<div><span ' + style + '>' + chat[i] +
-                        '</span>')
+                url: 'http://localhost:8080/messages',
+                success: function (result) {
+                    showArrayMessage(result);
                 }
             });
-        }, 3000);
-        setInterval(function loadJugadores(callback) {
-            $('#info2').empty();
-            $.ajax({
-                url: window.location.href + '/lobby/jugadores'
-            }).done(function (Jugador) {
-                console.log('Jugador: ' + JSON.stringify(Jugador));
-                for (var i = 0; i < Jugador.length; i++) {
-                    showJugador(Jugador[i]);
-                }
-            })
-        }, 3000);
-
-        function Jugadorest() {
-            $.ajax({
-                method: "GET",
-                url: window.location.href + '/lobby/valor',
-            }).done(function (valor) {
-                totales = valor;
-                console.log(totales);
-            })
         }
 
 
-        //Create jugador in server
-        function createJugador(jugador, callback) {
-            totales++;
-            console.log(totales);
-            $.ajax({
-                method: "POST",
-                url: window.location.href + '/lobby',
-                data: JSON.stringify(jugador),
-                processData: false,
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            }).done(function (jugador) {
-                var style = '';
-                console.log("Se ha unido el siguiente jugador: " + JSON.stringify(jugador));
-                id = jugador.id;
-                callback(jugador);
-                $('#info').append(
-                    '<div><span ' + style + '>' + "Se ha conectado el jugador " + jugador.nombre +
-                    '</span>')
-            })
-        }
-
-        //Create jugador in server
-        function createMensaje(mensaje, callback) {
-            $.ajax({
-                method: "POST",
-                url: window.location.href + '/lobby/mensaje/',
-                data: JSON.stringify(mensaje),
-                processData: false,
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            }).done(function (mensaje) {
-                console.log("Se ha escrito el siguiente mensaje: " + JSON.stringify(mensaje));
-                callback(mensaje);
-            })
-        }
-
-        //Get jugador
-        setInterval(function getJugador(totales) {
-            for (var i = 0; i <= totales; i++) {
-                $.ajax({
-                    method: 'GET',
-                    url: window.location.href + '/lobby/' + i
-                }).done(function (jugador) {
-                    console.log("Jugador " + JSON.stringify(jugador))
-                })
-                    .fail(function () {
-                        console.log("Jugador con id " + i + " no encontrado")
-                    })
+        function enterChat() {
+            if (uName.length == 0 || /\s/.test(uName)) {
+                alert("You can't enter an space in the username!");
+                return;
             }
-        }, 3000)
 
-        //Delete item from server
-        function deleteJugador(jugadorID) {
-            totales--;
-            $.ajax({
-                method: 'DELETE',
-                url: window.location.href + '/lobby/' + jugadorID
-            }).done(function (jugador) {
-                var style = "";
-                console.log("Deleted jugador " + jugadorID)
-                $('#info').append(
-                    '<div><span ' + style + '>' + "Se ha desconectado el jugador " + jugadorID +
-                    '</span>')
-            })
+            var app = document.querySelector(".app");
+            app.querySelector(".join-screen").classList.remove("active");
+            app.querySelector(".chat-screen").classList.add("active");
+            onChat = true;
+            createMessage(200, '');
         }
 
-        //Show item in page
-        function showJugador(jugador) {
-            var style = '';
+        function exitChat() {
+            var app = document.querySelector(".app");
+            app.querySelector(".join-screen").classList.add("active");
+            app.querySelector(".chat-screen").classList.remove("active");
+            onChat = false;
 
-            $('#info2').append(
-                '<div id="jugador-' + jugador.id + '"><span ' + style + '>' + jugador.nombre + " " + jugador.id +
-                '</span>')
+            createMessage(201, '');
+
         }
+        function createMessage(_type, messageData) {
+            var message = {
+                userName: uName,
+                content: messageData,
+                type: _type
+            }
 
-        function showMensaje(Mensaje) {
-            var style = '';
+            postMessage(message);
+        }
+        function writeOnJSON(data, type) {
 
-            $('#info').append(
-                '<div><span ' + style + '>' + Mensaje.contenido +
-                '</span>')
         }
 
         $(document).ready(function () {
-            var jugador = {
-                nombre: "aleatorio"
-            }
-            createJugador(jugador, function (Jugador) {
-                //When item with id is returned from server
-                showJugador(Jugador);
-            })
-            window.onbeforeunload = function () {
-                deleteJugador(id);
-            };
-
-            Jugadorest();
 
 
-            var inputplayer = $('#value-input2')
-            var infoplayer = $('#info2')
-            var input = $('#value-input')
-            var info = $('#info')
+            var intervalId = window.setInterval(function () {
+                if (onChat == true) {
+                    getMessage();
+                }
+            }, 1000);
+
 
             //Handle add button
-            $("#add-button").click(function () {
-                var test = document.querySelector('#input-form')
-                var name = test.querySelector('input[name="name"]');
-                var mensaje = {
-                    contenido: name.value,
+            $("#send-message").click(function () {
+
+                //input value storing the message data
+                var input = $('#message-input');
+                var messageData = input.val();
+                input.val('');
+
+                if (!/\S/.test(messageData)) {
+                    alert("You can't enter only spaces!");
+                } else {
+                    createMessage(100, messageData);
                 }
-                name.value = "";
-                createMensaje(mensaje, function (Mensaje) {
-                    //When item with id is returned from server
-                    showMensaje(Mensaje);
-                });
-            })
-        })
+
+            });
+
+            $(".join-screen #join-user").click(function () {
+                //input value storing the message data
+                var input = $('#username');
+                var messageData = input.val();
+
+                input.val('');
+                uName = messageData;
+                enterChat();
+            });
+
+            $(".header #exit-chat").click(function () {
+                exitChat();
+            });
+
+            if (onChat == true) {
+                getMessage();
+            }
+
+        });
     }
     update() {
         if (this.keySpace.isDown) {
