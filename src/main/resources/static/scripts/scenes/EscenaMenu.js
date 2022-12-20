@@ -34,7 +34,7 @@ class EscenaMenu extends Phaser.Scene {
 
         this.botonDetect.on('pointerdown', function () {
             this.scene.scene.launch('PauseScene');
-            this.scene.scene.launch('Online');
+            this.scene.scene.start('Online');
             this.scene.scene.sleep('PauseScene');
         })
 
