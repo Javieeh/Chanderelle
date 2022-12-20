@@ -40,19 +40,7 @@ class EscenaPausa extends Phaser.Scene {
             this.scene.scene.resume('GameScene');
         })
 
-        this.botonChat = this.physics.add.image(0, 0, 'chat');
-        this.botonChat.body.setAllowGravity(false);
-        this.botonChat.setScale(1.1);
-
-        this.botonDetectChat = this.add.container(400, 200, [this.botonChat]);
-        this.botonDetectChat.setSize(this.botonChat.height, this.botonChat.width);
-        this.botonDetectChat.setInteractive();
-        this.botonDetectChat.setScale(0.1);
-
-        this.botonDetectChat.on('pointerdown', function () {
-            this.scene.scene.sleep('PauseScene');
-            this.scene.scene.launch('Lobby');
-        })
+        
     }
 
     update() {
