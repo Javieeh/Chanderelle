@@ -12,7 +12,7 @@ const config = {
     },
     autoCenter: false,
 
-    scene: [EscenaMenu, EscenaJuego, EscenaPausa, EscenaFinalJ1, EscenaFinalJ2, Online],
+    scene: [EscenaMenu, EscenaJuego, EscenaPausa, EscenaFinalJ1, EscenaFinalJ2, Lobby],
 };//CONFIG
 
 const game = new Phaser.Game(config);

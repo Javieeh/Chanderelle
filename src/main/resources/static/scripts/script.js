@@ -1,46 +1,52 @@
 //Load items from server
 function loadItems(callback) {
-
-    console.log("loadItems");
-
-    //TODO Make GET request to load items. When request
-    //returns, we'll call to 'callback' function with loaded items
-
-    //For now, as there is no request, then we call with empty array
-    callback([]);
+    $.ajax({
+        url: 'http://localhost:8080/items'
+    }).done(function (items) {
+        console.log('Items loaded: ' + JSON.stringify(items));
+        callback(items);
+    })
 }
 
 //Create item in server
 function createItem(item, callback) {
-
-    console.log("createItem: " + JSON.stringify(item));
-
-    //TODO Make POST request to create an item in the server
-    //When request returned, call 'callback' with returned 
-    //item as it has 'id' property. It is necessary to update
-    //it or delete it
-
-    //For now, as there is no request, then we call with id=0.
-    item.id = '0'
-    callback(item);
+    $.ajax({
+        method: "POST",
+        url: 'http://localhost:8080/items',
+        data: JSON.stringify(item),
+        processData: false,
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).done(function (item) {
+        console.log("Item created: " + JSON.stringify(item));
+        callback(item);
+    })
 }
 
 //Update item in server
 function updateItem(item) {
-
-    console.log("updateItem: " + JSON.stringify(item));
-
-    //TODO Make PUT request to update the item in the server
-
+    $.ajax({
+        method: 'PUT',
+        url: 'http://localhost:8080/items/' + item.id,
+        data: JSON.stringify(item),
+        processData: false,
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).done(function (item) {
+        console.log("Updated item: " + JSON.stringify(item))
+    })
 }
 
 //Delete item from server
 function deleteItem(itemId) {
-
-    console.log("deleteItem: " + itemId);
-
-    //TODO Make DELETE request to remove the item in the server
-
+    $.ajax({
+        method: 'DELETE',
+        url: 'http://localhost:8080/items/' + itemId
+    }).done(function (item) {
+        console.log("Deleted item " + itemId)
+    })
 }
 
 //Show item in page

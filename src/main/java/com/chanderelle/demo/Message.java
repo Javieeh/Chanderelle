@@ -1,31 +1,41 @@
 package com.chanderelle.demo;
 
-public class Message{
-	
-	private String contenido;
-	private User user;
-	
+public class Message {
+
+	private long id;
+	private String description;
+	private boolean checked;
+
 	public Message() {
 	}
-	
-	public String getContenido() {
-		return contenido;
+
+	public long getId() {
+		return id;
 	}
-	public void setContenido(String contenido) {
-		this.contenido = contenido;
+
+	public void setId(long id) {
+		this.id = id;
 	}
-	public User getUser() {
-		return user;
+
+	public String getDescription() {
+		return description;
 	}
-	public void setUser(User user) {
-		this.user = user;
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
-	
+
+	public boolean getChecked() {
+		return checked;
+	}
+
+	public void setChecked(boolean checked) {
+		this.checked = checked;
+	}
+
 	@Override
 	public String toString() {
-		return "Mensaje [contenido=" + contenido + ", jugador=" + user + "]";
+		return "Item [id=" + id + ", description=" + description + ", checked=" + checked + "]";
 	}
-	
-	
-	
+
 }
