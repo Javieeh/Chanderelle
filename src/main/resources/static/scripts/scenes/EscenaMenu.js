@@ -25,11 +25,13 @@ class EscenaMenu extends Phaser.Scene {
 
 
         var boton = this.add.image(0, 0, 'boton');
+        boton.setScale(1);
 
 
         this.botonDetect = this.add.container(400, 500, [boton]);
         this.botonDetect.setSize(boton.height, boton.width);
         this.botonDetect.setInteractive();
+        this.botonDetect.setScale(0.1);
 
 
         this.botonDetect.on('pointerdown', function () {
