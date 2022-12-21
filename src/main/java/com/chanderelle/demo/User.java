@@ -11,7 +11,7 @@ public class User {
 		return nick;
 	}
 
-	public void setName(String _nick) {
+	public void setName(String nick) {
 		this.nick = nick;
 	}
 
@@ -25,6 +25,6 @@ public class User {
 	
 	@Override
 	public String toString() {
-		return "Jugador [id=" + id + ", nombre=" + nick + "]";
+		return "Jugador [id=" + this.id + ", nombre=" + this.nick + "]";
 	}
 }

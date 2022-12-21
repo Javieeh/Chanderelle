@@ -37,33 +37,33 @@ public class LobbyController {
 	}
 
     @GetMapping("/jugadores")
-	public Collection<User> players() {
-		return lobby.getPlayerList();
+	public Collection<User> users() {
+		return lobby.getUserList();
 	}
 	
 	@PostMapping("/mensaje")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Message newMessage(@RequestBody Message _message) {
-		lobby.addMessage(_message);
-		file.Write(_message.getContent());
-		return _message;
+	public Message newMessage(@RequestBody Message message) {
+		lobby.addMessage(message);
+		file.Write(message.getContent());
+		return message;
 	}
 
     @PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public User newPlayer(@RequestBody User _player) {
+	public User newUser(@RequestBody User user) {
 
 		int id = nextId.getAndIncrement();
-		_player.setId(id);
-		lobby.addPlayer(_player);
+		user.setId(id);
+		lobby.addUser(user);
 
-		return _player;
+		return user;
 	}
 
     @GetMapping("/{id}")
-	public ResponseEntity<User> getPlayer(@PathVariable int id) {
+	public ResponseEntity<User> getUser(@PathVariable int id) {
 		if(id < nextId.get()) {
-			User _player = lobby.getPlayer(id);
+			User _player = lobby.getUser(id);
 			if (_player != null) {
 				return new ResponseEntity<>(_player, HttpStatus.OK);
 			} else {
@@ -75,12 +75,12 @@ public class LobbyController {
 	}
 
     @DeleteMapping("/{id}")
-	public ResponseEntity<User> deletePlayer(@PathVariable int id) {
-		for(int j = 0; j < lobby.getPlayerList().size(); j++) {
-			if (id == lobby.getPlayerList().get(j).getId()) {
-				User _player = lobby.getPlayer(j);
-				lobby.getPlayerList().remove(j);
-				return new ResponseEntity<>(_player, HttpStatus.OK);
+	public ResponseEntity<User> deleteUser(@PathVariable int id) {
+		for(int j = 0; j < lobby.getUserList().size(); j++) {
+			if (id == lobby.getUserList().get(j).getId()) {
+				User user = lobby.getUser(j);
+				lobby.getUserList().remove(j);
+				return new ResponseEntity<>(user, HttpStatus.OK);
 			}
 		}
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -88,6 +88,6 @@ public class LobbyController {
 
     @GetMapping("/valor")
 	public int getTotal() {
-		return lobby.getPlayerList().size(); 
+		return lobby.getUserList().size(); 
 	}
 }

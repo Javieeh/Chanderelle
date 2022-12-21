@@ -12,19 +12,19 @@ public class Lobby {
 	public Lobby() {
 	}
 	
-	public List<User> getPlayerList() {
+	public List<User> getUserList() {
 		return userList;
 	}
 
-	public User getPlayer(int i) {
+	public User getUser(int i) {
 		return userList.get(i);
 	}
 	
-	public void addPlayer(User _player) {
-		userList.add(_player);
+	public void addUser(User player) {
+		userList.add(player);
 	}
 	
-	public void removePlayer(int id) {
+	public void removeUser(int id) {
 		userList.remove(id);
 	}
 
@@ -32,8 +32,8 @@ public class Lobby {
 		return chat;
 	}
 	
-	public void addMessage(Message _message) {
-		chat.add(_message);
+	public void addMessage(Message message) {
+		chat.add(message);
 	}
 
 	@Override

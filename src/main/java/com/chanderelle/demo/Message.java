@@ -14,11 +14,11 @@ public class Message {
 	public void setContent(String text) {
 		this.text = text;
 	}
-	public User getPlayer() {
+	public User getUser() {
 		return user;
 	}
-	public void setJugador(User _player) {
-		this.user = _player;
+	public void setUser(User user) {
+		this.user = user;
 	}
 	
 	@Override
