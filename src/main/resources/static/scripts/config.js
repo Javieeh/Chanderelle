@@ -16,7 +16,7 @@ const config = {
     },
     autoCenter: false,
 
-    scene: [EscenaMenu, EscenaJuego, EscenaPausa, EscenaFinalJ1, EscenaFinalJ2, Lobby],
+    scene: [EscenaMenu, EscenaJuego, EscenaPausa, EscenaFinalJ1, EscenaFinalJ2, EscenaLobby],
 };//CONFIG
 
 const game = new Phaser.Game(config);

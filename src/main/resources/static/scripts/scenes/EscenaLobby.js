@@ -1,10 +1,10 @@
 var playerCount;
 var id;
 
-class Lobby extends Phaser.Scene{
+class EscenaLobby extends Phaser.Scene{
     
     constructor() {
-        super("Lobby");
+        super("LobbyScene");
     }
 
 	initialize() {
