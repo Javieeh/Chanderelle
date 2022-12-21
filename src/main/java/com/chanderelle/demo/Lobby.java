@@ -7,25 +7,25 @@ import java.util.ArrayList;
 public class Lobby {
 	
     private List<Message> chat = new ArrayList<Message>();
-	private List<Player> playerList = new ArrayList<Player>();
+	private List<User> userList = new ArrayList<User>();
 
 	public Lobby() {
 	}
 	
-	public List<Player> getPlayerList() {
-		return playerList;
+	public List<User> getPlayerList() {
+		return userList;
 	}
 
-	public Player getPlayer(int i) {
-		return playerList.get(i);
+	public User getPlayer(int i) {
+		return userList.get(i);
 	}
 	
-	public void addPlayer(Player _player) {
-		playerList.add(_player);
+	public void addPlayer(User _player) {
+		userList.add(_player);
 	}
 	
 	public void removePlayer(int id) {
-		playerList.remove(id);
+		userList.remove(id);
 	}
 
 	public List<Message> getChat() {
@@ -38,6 +38,6 @@ public class Lobby {
 
 	@Override
 	public String toString() {
-			return playerList.toString();
+			return userList.toString();
 	}
 }

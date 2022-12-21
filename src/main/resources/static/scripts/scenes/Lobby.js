@@ -16,10 +16,7 @@ class Lobby extends Phaser.Scene{
     }
 
     create(){
-		this.fondo = this.add.image(400, 300, 'fondoMenu');
-        this.fondo.setDepth(1);
-        this.fondo.setScale(0.5);
-
+		
 
 		this.idOfExitedPlayer = 0;
 		this.returnKey =  this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);

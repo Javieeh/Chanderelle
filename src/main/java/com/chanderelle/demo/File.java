@@ -13,11 +13,11 @@ public class File {
 	public File() {
 	}
 	
-	public void Write(String cadena){
+	public void Write(String s){
 		try {
 			FileWriter file = new FileWriter("HistorialChat.txt",true);
 			try(BufferedWriter buffer = new BufferedWriter(file)){
-				buffer.write(cadena);
+				buffer.write(s);
 				buffer.newLine();
 				buffer.close();
 			}
@@ -34,9 +34,9 @@ public class File {
 		try {
 			FileReader archivo = new FileReader("HistorialChat.txt");
 			try(BufferedReader lectura = new BufferedReader(archivo)){
-				String strng;
-				while((strng = lectura.readLine()) != null) {
-					data.add(strng);
+				String s;
+				while((s = lectura.readLine()) != null) {
+					data.add(s);
 				}
 			}
 		}catch(Exception ex) {

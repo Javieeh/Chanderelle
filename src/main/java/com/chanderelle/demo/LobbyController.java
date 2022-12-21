@@ -37,7 +37,7 @@ public class LobbyController {
 	}
 
     @GetMapping("/jugadores")
-	public Collection<Player> players() {
+	public Collection<User> players() {
 		return lobby.getPlayerList();
 	}
 	
@@ -51,7 +51,7 @@ public class LobbyController {
 
     @PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public Player newPlayer(@RequestBody Player _player) {
+	public User newPlayer(@RequestBody User _player) {
 
 		int id = nextId.getAndIncrement();
 		_player.setId(id);
@@ -61,9 +61,9 @@ public class LobbyController {
 	}
 
     @GetMapping("/{id}")
-	public ResponseEntity<Player> getPlayer(@PathVariable int id) {
+	public ResponseEntity<User> getPlayer(@PathVariable int id) {
 		if(id < nextId.get()) {
-			Player _player = lobby.getPlayer(id);
+			User _player = lobby.getPlayer(id);
 			if (_player != null) {
 				return new ResponseEntity<>(_player, HttpStatus.OK);
 			} else {
@@ -75,10 +75,10 @@ public class LobbyController {
 	}
 
     @DeleteMapping("/{id}")
-	public ResponseEntity<Player> deletePlayer(@PathVariable int id) {
+	public ResponseEntity<User> deletePlayer(@PathVariable int id) {
 		for(int j = 0; j < lobby.getPlayerList().size(); j++) {
 			if (id == lobby.getPlayerList().get(j).getId()) {
-				Player _player = lobby.getPlayer(j);
+				User _player = lobby.getPlayer(j);
 				lobby.getPlayerList().remove(j);
 				return new ResponseEntity<>(_player, HttpStatus.OK);
 			}
