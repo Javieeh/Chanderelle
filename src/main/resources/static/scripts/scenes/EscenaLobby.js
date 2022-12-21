@@ -1,5 +1,8 @@
 var playerCount;
 var id;
+var name;
+var title;
+var space;
 
 class EscenaLobby extends Phaser.Scene{
     
@@ -74,10 +77,11 @@ class EscenaLobby extends Phaser.Scene{
             }).done(function (player) {
                 var style = '';
                 console.log("Se ha unido el siguiente jugador: " + JSON.stringify(player));
+                
                 id = player.id;
                 callback(player);
                 $('#info-players').append(
-                    '<div><span ' + style + '>' + "Se ha conectado el " + player.name + id +
+                    '<div><span ' + style + '>' + "Se ha conectado el Jugador " +  id +
                     '</span>')
             })
         }
@@ -92,8 +96,9 @@ class EscenaLobby extends Phaser.Scene{
                     "Content-Type": "application/json"
                 }
             }).done(function (message) {
+				
                 console.log("Se ha escrito el siguiente mensaje: " + JSON.stringify(message));
-                callback(message);
+                callback( message);
             })
         }
 
@@ -134,12 +139,12 @@ class EscenaLobby extends Phaser.Scene{
         function showPlayer(player) {
             var style = 'color:red';
             $('#info-players').append(
-                '<div id="jugador-' + player.id + '"><span ' + style + '>' + player.name + " " + player.id +
+                '<div id="jugador-' + player.id + '"><span ' + style + '>' +"Jugador " + player.id +
                 " esta online " + '</span>')
         }
 
         // Show message
-        function showMessage(message,player) {
+        function showMessage(message) {
             var style = '';
             $('#chat').append(
                 '<div style="color:white"><span >'+ message.content + 
@@ -148,7 +153,7 @@ class EscenaLobby extends Phaser.Scene{
 
         $(document).ready(function () {
             var player = {
-                name: "Jugador"
+                name: "Jugador "
             }
             createPlayer(player, function (Jugador) {
                 //When item with id is returned from server
@@ -169,7 +174,7 @@ class EscenaLobby extends Phaser.Scene{
                 var test = document.querySelector('#input-form')
                 var name = test.querySelector('input[name="name"]');
                 var message = {
-                    content: name.value,
+                    content:"Jugador "+ id + ": " + name.value,
                 }
                 name.value = "";
                 createMessage(message, function (msg) {
