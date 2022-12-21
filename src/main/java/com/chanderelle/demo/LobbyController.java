@@ -1,6 +1,8 @@
 package com.chanderelle.demo;
 
 import java.io.BufferedWriter;
+
+
 import java.io.FileWriter;
 import java.util.Collection;
 import java.util.List;
@@ -24,47 +26,46 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/lobby")
 public class LobbyController {
-	
-	Archivo a = new Archivo();
-	Lobby l = new Lobby();
+    
+	File file = new File();
+	Lobby lobby = new Lobby();
 	AtomicInteger nextId = new AtomicInteger(0);
-	
-	
-	@GetMapping
+
+    @GetMapping
 	public List<String> chat() {
-		return a.Leer();
+		return file.Read();
 	}
-	
-	@GetMapping("/jugadores")
-	public Collection<Jugador> jugadores() {
-		return l.getJugadores();
+
+    @GetMapping("/jugadores")
+	public Collection<Player> players() {
+		return lobby.getPlayerList();
 	}
 	
 	@PostMapping("/mensaje")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Mensaje nuevoMensaje(@RequestBody Mensaje mensaje) {
-		l.addm(mensaje);
-		a.Escribir(mensaje.getContenido());
-		return mensaje;
+	public Message newMessage(@RequestBody Message _message) {
+		lobby.addMessage(_message);
+		file.Write(_message.getContent());
+		return _message;
 	}
-	
-	@PostMapping
+
+    @PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public Jugador nuevoJugador(@RequestBody Jugador jugador) {
+	public Player newPlayer(@RequestBody Player _player) {
 
 		int id = nextId.getAndIncrement();
-		jugador.setId(id);
-		l.addj(jugador);
+		_player.setId(id);
+		lobby.addPlayer(_player);
 
-		return jugador;
+		return _player;
 	}
-	
-	@GetMapping("/{id}")
-	public ResponseEntity<Jugador> getJugador(@PathVariable int id) {
+
+    @GetMapping("/{id}")
+	public ResponseEntity<Player> getPlayer(@PathVariable int id) {
 		if(id < nextId.get()) {
-			Jugador jugador = l.getJugador(id);
-			if (jugador != null) {
-				return new ResponseEntity<>(jugador, HttpStatus.OK);
+			Player _player = lobby.getPlayer(id);
+			if (_player != null) {
+				return new ResponseEntity<>(_player, HttpStatus.OK);
 			} else {
 				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 			}	
@@ -72,21 +73,21 @@ public class LobbyController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}	
 	}
-	
-	@DeleteMapping("/{id}")
-	public ResponseEntity<Jugador> borraJugador(@PathVariable int id) {
-		for(int j = 0; j < l.getJugadores().size(); j++) {
-			if (id == l.getJugadores().get(j).getId()) {
-				Jugador jugador = l.getJugador(j);
-				l.getJugadores().remove(j);
-				return new ResponseEntity<>(jugador, HttpStatus.OK);
+
+    @DeleteMapping("/{id}")
+	public ResponseEntity<Player> deletePlayer(@PathVariable int id) {
+		for(int j = 0; j < lobby.getPlayerList().size(); j++) {
+			if (id == lobby.getPlayerList().get(j).getId()) {
+				Player _player = lobby.getPlayer(j);
+				lobby.getPlayerList().remove(j);
+				return new ResponseEntity<>(_player, HttpStatus.OK);
 			}
 		}
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
-	
-	@GetMapping("/valor")
+
+    @GetMapping("/valor")
 	public int getTotal() {
-		return l.getJugadores().size(); 
+		return lobby.getPlayerList().size(); 
 	}
 }

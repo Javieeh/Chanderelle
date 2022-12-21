@@ -1,44 +1,43 @@
 package com.chanderelle.demo;
 
 import java.util.List;
+
 import java.util.ArrayList;
 
 public class Lobby {
-
-	private List<Mensaje> chat = new ArrayList<Mensaje>();
-	private List<Jugador> jugadores = new ArrayList<Jugador>();
+	
+    private List<Message> chat = new ArrayList<Message>();
+	private List<Player> playerList = new ArrayList<Player>();
 
 	public Lobby() {
-		
 	}
 	
-	public List<Jugador> getJugadores() {
-		return jugadores;
+	public List<Player> getPlayerList() {
+		return playerList;
 	}
 
-	public Jugador getJugador(int i) {
-		return jugadores.get(i);
+	public Player getPlayer(int i) {
+		return playerList.get(i);
 	}
 	
-	public void addj(Jugador jugador) {
-		jugadores.add(jugador);
+	public void addPlayer(Player _player) {
+		playerList.add(_player);
 	}
 	
-	public void removeJugador(int id) {
-		jugadores.remove(id);
+	public void removePlayer(int id) {
+		playerList.remove(id);
 	}
 
-	public List<Mensaje> getChat() {
+	public List<Message> getChat() {
 		return chat;
 	}
 	
-	public void addm(Mensaje mensaje) {
-		chat.add(mensaje);
+	public void addMessage(Message _message) {
+		chat.add(_message);
 	}
 
 	@Override
 	public String toString() {
-			return jugadores.toString();
+			return playerList.toString();
 	}
-
 }

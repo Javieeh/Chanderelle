@@ -64,7 +64,7 @@ class EscenaMenu extends Phaser.Scene {
         this.botonDetectChat.setScale(0.1);
 
         this.botonDetectChat.on('pointerdown', function () {
-            this.scene.scene.start('Online');
+            this.scene.scene.start('Lobby');
         })
 
     }
