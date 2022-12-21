@@ -14,6 +14,8 @@
 ### ESCENAS
 ##### Se muestra el titulo del juego junto a un botón "jugar" con el que los jugadores comienzan la partida.
 ![Menu](src/main/resources/static/capturas_juego/menu.PNG)
+##### Lobby donde se muestran los jugadores conectados y un chat donde se muestra los mensajes y sus autores.
+![Menu](src/main/resources/static/capturas_juego/chat.png)
 ###
 ##### En pantalla se encuentran en escenario conformado por una serie de plataformas de hojas, en estas los jugadores pueden subirse para alcanzar una ventaja táctica sobre el enemigo así como cubrirse de los disparos rivales. A su vez, en la parte superior, se encuentran las vidas de cada jugador identificadas por la imagen de su personaje, siendo estas de un máximo de 3. Finalmente podemos identificar los personajes en juego como las setas rosa y blanca.
 ![Juego](src/main/resources/static/capturas_juego/juego.png)
