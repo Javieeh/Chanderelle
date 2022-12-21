@@ -27,7 +27,7 @@
 ##### Se muestra una imagen en la parte superior indicando que el jugador 2 ha sido el vencedor. Abajo de esta indicación hay un boton de reinicio que permite volver al menú principal para jugar otra partida.
 ![victoria_J2](src/main/resources/static/capturas_juego/victoria_J2.PNG)
 ### DIAGRAMA DE ESCENAS
-![Menu](src/main/resources/static/capturas_juego/diagrama.png)
+![Menu](src/main/resources/static/capturas_juego/diagrama_de_estados.png)
 ##### En este menú se muestra el desplazamiento que puede hacer el jugador entre las escenas. En primer lugar, desde el menú principal solo puede acceder al juego, desde el juego al menú de pausa, y al de victoria de cada jugador. Desde estos se puede acceder al menu principal otra vez.
 ### DIAGRAMA DE CLASES API REST
 ![Diagrama_de_Clases](src/main/resources/static/capturas_juego/Diagrama_de_Clases.png)
