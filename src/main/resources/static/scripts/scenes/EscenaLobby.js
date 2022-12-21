@@ -21,7 +21,7 @@ class EscenaLobby extends Phaser.Scene{
 		this.idOfExitedPlayer = 0;
 		this.returnKey =  this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
 		this.style = { font: "15px OCR A", fill: "#FFFFFF" };
-        this.nameInput = this.add.dom(400, 325).createFromCache("form");
+        this.nameInput = this.add.dom(400, 125).createFromCache("form");
 
         setInterval(function loadChat() {
             $('#chat').empty();
@@ -30,7 +30,7 @@ class EscenaLobby extends Phaser.Scene{
                url: window.location.href + 'lobby'
            }).done(function (chat) {
                for (var i = 0; i < chat.length; i++) {
-                   var style = '';
+                   var style = 'color:white';
                    $('#chat').append('<div><span ' + style + '>' + chat[i] +'</span>')
                }
            });
@@ -47,6 +47,7 @@ class EscenaLobby extends Phaser.Scene{
                 }
             })
         },3000);
+        
 
         function Players(){
             $.ajax({
@@ -96,6 +97,7 @@ class EscenaLobby extends Phaser.Scene{
             })
         }
 
+        
         //Get Player
         setInterval(function getJugador(total) {
             for (var i = 0; i <= total; i++) {
@@ -110,6 +112,7 @@ class EscenaLobby extends Phaser.Scene{
                 })
             }
         }, 3000)
+        
 
         //Delete player from server 
         function deletePlayer(playerId) {
@@ -129,17 +132,17 @@ class EscenaLobby extends Phaser.Scene{
 
         //Show player connection
         function showPlayer(player) {
-            var style = '';
+            var style = 'color:red';
             $('#info-players').append(
                 '<div id="jugador-' + player.id + '"><span ' + style + '>' + player.name + " " + player.id +
                 " esta online " + '</span>')
         }
 
         // Show message
-        function showMessage(message) {
+        function showMessage(message,player) {
             var style = '';
             $('#chat').append(
-                '<div><span>' + message.content +
+                '<div style="color:white"><span >'+ message.content + 
                 '</span>')
         }
 
