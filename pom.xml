@@ -3,13 +3,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>es.urjc.code.juegosenred</groupId>
-	<artifactId>items-backend-and-frontend</artifactId>
+	<groupId>com.chanderelle.demo</groupId>
+	<artifactId>ChanderelleV2Application</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>rest_ejer1_con_ui</name>
-	<description>Backend y frontend para el ejercicio de gesti�n de items</description>
+	<name>Chanderelle</name>
+	<description>apirest</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -36,6 +36,23 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			
+			<plugin>
+				 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.3.0</version><!--$NO-MVN-MAN-VER$-->
+                <configuration>
+                  <archive>
+                    <manifest>
+						<addClasspath>true</addClasspath>
+            			<classpathPrefix>lib/</classpathPrefix>
+                    <!-- give full qualified name of your main class-->
+                      <mainClass>com.chanderelle.demo.ChanderelleV2Application</mainClass>
+
+                    </manifest>
+                  </archive>
+                </configuration>
 			</plugin>
 		</plugins>
 	</build>
