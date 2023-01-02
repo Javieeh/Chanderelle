@@ -1,3 +1,14 @@
 Jugador 0: hola
 Jugador 0: hola
 Jugador 1: hola
+Jugador 1: hola
+Jugador 2: Irene
+Jugador 0: hola
+Jugador 1: hola
+Jugador 1: hola
+Jugador 2: Irene
+Jugador 3: hola
+Jugador 6: hola
+Jugador 6: sdsd
+Jugador 6: dq
+Jugador 6: eqq

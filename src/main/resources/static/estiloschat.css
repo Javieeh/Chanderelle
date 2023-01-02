@@ -2,6 +2,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    transform-origin: -50%;
 }
 #divTEXT{
     background-color: cadetblue;
@@ -18,9 +19,10 @@
 }
 #divBODY{ /*DIV MASTER*/
     background-color: blue;
-    height: 95%;
+    height: 600px;
     display: flex;
-    width: 100%;
+    width: 400px;
+    
 }
 #info-players{ /*DIV JUGADORES CONECTADOS/DESCONECTADOS*/
     width: 30%;
@@ -34,7 +36,7 @@
     background-color: gold;
  
 }
-#divMESSAGES{
+#chat{
     
     background-color: purple;
     border: 4px solid rgb(85, 1, 85);
@@ -42,10 +44,7 @@
     height: 95%;
     padding: 10px;
     display: block;
-}
-#pdivMESSAGES{
-    color: aliceblue;
-    font-size: 1.5rem;
+    font-size: 5rem;
 }
 #divINPUT{
     display: flex;
