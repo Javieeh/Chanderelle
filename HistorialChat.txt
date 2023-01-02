@@ -1,0 +1,3 @@
+Jugador 0: hola
+Jugador 0: hola
+Jugador 1: hola

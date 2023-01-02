@@ -1,0 +1,14 @@
+{
+  "name": "juegos-en-red",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Marcos.Toledo, Jesus.Culebas, Aitor.Lebrero",
+  "license": "ISC",
+  "dependencies": {
+    "phaser": "^3.55.2"
+  }
+}
