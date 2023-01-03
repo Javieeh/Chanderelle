@@ -1,27 +1,70 @@
-<script src="scripts/config.js"></script>
-<link rel="stylesheet" href="estiloschat.css">
 
-    <div id="divTEXT">
-        <h1 id="pText"> Este es el chat: </h1>
-    </div>
+<html>
 
-    <div id="divBODY">
-        <!--DIV PARA VER LOS JUGADORES CONECTADOS/DESCONECTADOS-->
-        <div class="col2" id='info-players' style="font-size:25px"></div>
-        <!--DIV PARA EL CHAT-->
-        <div id="divCHAT">
-            <!--DIV PARA LOS MENSAJES-->
-            <div id='chat' name="a" style="font-size:5px"></div>
-            <!--DIV PARA EL INPUT-->
-            <div id="divINPUT" class="row">
-                <div class="col1" id="input-form">
-                    <input id="value-input" placeholder='Prueba a decir algo' type='text' name="name">
-                    <button id="send-button" onclick="AddText()">Enviar</button>
-                    
-                </div>
+<head>
 
+</head>
 
-            </div>
+<body>
+    <style>
+        .todoDiv {
+            display: flex;
+            width: 800px;
+            height: 600px;
+            position: relative;
+            top: 0px;
+            left: 0px;
+
+        }
+
+        .chatDiv {
+            flex: 2;
+            table-layout: fixed;
+            width: 400px;
+            min-width: 20px;
+            max-width: 400px;
+            height: 600px;
+            min-height: 0px;
+            max-height: 600px;
+            
+            margin: 0px;
+            border: solid;
+            color: white;
+            padding: 0px;
+            background-color: rgba(255, 0, 0, 0.4);
+            overflow: scroll;
+        }
+
+        .lobbyDiv {
+            flex: 2; 
+  			table-layout:fixed;
+  			margin:20px;
+  			min-width: 300px;
+  			max-width: 300px;
+  			min-height:300px;
+  			max-height:300px;
+  			border: solid;
+  			padding:5px;
+  			color:white;
+  			background-color:rgba(0,0,255,0.4);
+  			overflow:scroll;
+        }
+    </style>
+
+    <div class="todoDiv">
+        <div class="chatDiv" id="input-form">
+
+            <input id="value-input" placeholder='Prueba a decir algo' type='text' name="name">
+            <button id="send-button" onclick="AddText()">Enviar</button>
+
+            <div id="chat" style="font-size: 20px;"></div>
+
+        </div>
+
+        <div class="lobbyDiv" id="info-players">
 
         </div>
     </div>
+</body>
+
+</html>

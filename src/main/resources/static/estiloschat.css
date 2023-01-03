@@ -2,7 +2,6 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    transform-origin: -50%;
 }
 #divTEXT{
     background-color: cadetblue;
@@ -19,7 +18,7 @@
 }
 #divBODY{ /*DIV MASTER*/
     background-color: blue;
-    height: 600px;
+    height: 400px;
     display: flex;
     width: 400px;
     
@@ -36,6 +35,10 @@
     background-color: gold;
  
 }
+
+element.style{
+	font-size: 15px;
+}
 #chat{
     
     background-color: purple;
@@ -44,7 +47,6 @@
     height: 95%;
     padding: 10px;
     display: block;
-    font-size: 5rem;
 }
 #divINPUT{
     display: flex;
