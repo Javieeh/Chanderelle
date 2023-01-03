@@ -1,9 +1,9 @@
 
 const config = {
     type: Phaser.AUTO,
+    parent: "videogame",
     width: 800,
     height: 600,
-    parent: "videogame",
     dom: {
         createContainer: true
     },
