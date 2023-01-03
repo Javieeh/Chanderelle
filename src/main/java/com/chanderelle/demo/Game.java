@@ -3,6 +3,7 @@ import org.springframework.web.socket.WebSocketSession;
 
 public class Game {
 	//Atributos
+	private int idHost;
 	private User J1;
 	private User J2;
 	private Boolean full;
@@ -18,7 +19,7 @@ public class Game {
 	Game(User j1, User j2) {
 		this.J1 = j1;
 		this.J2 = j2;
-		this.full = true;
+		this.full = false;
 		this.empty = false;
 	}
 	//Getters y setters

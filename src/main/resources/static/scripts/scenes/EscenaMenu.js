@@ -39,6 +39,8 @@ class EscenaMenu extends Phaser.Scene {
 
 
         this.botonDetect.on('pointerdown', function () {
+			crearPartida();
+    		console.log("He enviado petición para crear partida");
             this.scene.scene.launch('PauseScene');
             this.scene.scene.launch('GameScene');
             this.scene.scene.sleep('PauseScene');
