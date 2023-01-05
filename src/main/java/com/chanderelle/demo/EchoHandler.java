@@ -10,7 +10,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 
-public class WebSocketHandler extends TextWebSocketHandler {
+public class EchoHandler extends TextWebSocketHandler {
 
 	public ObjectMapper mapper = new ObjectMapper();
 	public int numPartidas = 0;

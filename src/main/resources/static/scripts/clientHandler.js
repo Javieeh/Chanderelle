@@ -1,4 +1,4 @@
-var socket = new WebSocket("ws://localhost:8080");
+var socket = new WebSocket("ws://localhost:8080/chanderelle");
 
 //Lo que el cliente envía al servidor
 function createGame() {
