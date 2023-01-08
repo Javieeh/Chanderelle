@@ -37,8 +37,8 @@ socket.onopen = function() {
 //Manejamos lo que recibimos del servidor con un switch
 socket.onmessage = function (event) {
 	var msg = JSON.parse(event.data)
-	ID = msg.ID
-	switch(ID){
+	id = msg.ID
+	switch(id){
 		
 		case(0):
 		console.log("Partida creada");

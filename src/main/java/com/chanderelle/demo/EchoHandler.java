@@ -1,10 +1,11 @@
 package com.chanderelle.demo;
 
+import java.io.IOException;
+
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
+
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -12,12 +13,12 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 
 public class EchoHandler extends TextWebSocketHandler {
 
-	public ObjectMapper mapper = new ObjectMapper();
+	public static ObjectMapper mapper = new ObjectMapper();
 	public int numPartidas = 0;
-	public User j1;
-	public User j2;
+	public static User j1;
+	public static User j2;
 	
-	private void handler(TextMessage message, WebSocketSession session) throws JsonMappingException, JsonProcessingException {
+	protected void handler(TextMessage message, WebSocketSession session) throws Exception {
 		
 		JsonNode node = mapper.readTree(message.getPayload());
 		int id = node.get("ID").asInt();
@@ -41,12 +42,15 @@ public class EchoHandler extends TextWebSocketHandler {
 			WebSocketSession sesionLocalJ1 = game.getJ1().getSession();
 			WebSocketSession sesionLocalJ2 = game.getJ2().getSession();
 			
-			msgNode.put("idFuncion", 4);
-			msgNodeAux.put("idFuncion", 4);
+			msgNode.put("ID", 0);
+			msgNodeAux.put("ID", 0);
 			
 			msgNode.put("estadoPartida", true);
 			msgNodeAux.put("estadoPartida", true);
-			 
+			
+			sesionLocalJ1.sendMessage(new TextMessage(msgNode.toString()));
+			sesionLocalJ2.sendMessage(new TextMessage(msgNodeAux.toString()));
+ 
 		}
 		
 	}
