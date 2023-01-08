@@ -3,7 +3,7 @@ import org.springframework.web.socket.WebSocketSession;
 
 public class Game {
 	//Atributos
-	private int idHost;
+	private int ID;
 	private User J1;
 	private User J2;
 	private Boolean full;
@@ -16,13 +16,21 @@ public class Game {
 		this.full = false;
 		this.empty = true;
 	}
-	Game(User j1, User j2) {
+	Game(int id, User j1) {
 		this.J1 = j1;
-		this.J2 = j2;
+		this.J2 = null;
 		this.full = false;
 		this.empty = false;
+		this.ID = id;
 	}
 	//Getters y setters
+	public int getId() {
+		 return this.ID;
+	}
+	 
+	 public void setId(int id) {
+		 ID = id;
+	}
 	public User getJ1() {
 		return J1;
 	}
