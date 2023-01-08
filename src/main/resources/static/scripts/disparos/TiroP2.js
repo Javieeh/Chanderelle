@@ -10,17 +10,22 @@ class TiroP2 extends Phaser.Physics.Arcade.Sprite {
             this.body.reset(x - 5, y);
             this.setVelocityX(-600);
             this.anims.play('pum', true);
-            this.setOrigin(0, 0.5);
+            this.setSize(50,50);
+            this.setOffset(-0,60);
 
         }
+
         if (direction == 'right') {
             this.flipX = false;
             this.body.reset(x + 5, y);
             this.setVelocityX(600);
+            this.setDepth(-1);
             this.anims.play('pum', true);
-            this.setOrigin(1, 0.5);
+            this.setSize(50,50);
+            this.setOffset(500,60);
 
-        }
+        } 
+
 
         this.setActive(true);
         this.setVisible(true);

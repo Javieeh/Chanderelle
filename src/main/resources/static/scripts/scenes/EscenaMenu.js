@@ -1,4 +1,7 @@
 
+
+var menu_music;
+var menusfx;
 class EscenaMenu extends Phaser.Scene {
 	
     constructor() {
@@ -17,7 +20,11 @@ class EscenaMenu extends Phaser.Scene {
     preload() {
         this.load.image('fondoMenu', 'assets/chanderelle.png');
         this.load.image('boton', 'assets/jugar.png');
-        this.load.image('chat', 'assets/chat.png')
+        this.load.image('chat', 'assets/chat.png');
+        this.load.audio('Menu_music', ['music/JER.mp3','music/JER.ogg']);
+        this.load.audio('menusfx', 'music/SFX/MenuSFX.mp3');
+
+
     }
 
     create() {
@@ -41,6 +48,8 @@ class EscenaMenu extends Phaser.Scene {
         this.botonDetect.on('pointerdown', function () {
 			createGame();
     		console.log("He enviado petición para crear partida");
+            menusfx.play();
+            menu_music.stop();
             this.scene.scene.launch('PauseScene');
             this.scene.scene.launch('GameScene');
             this.scene.scene.sleep('PauseScene');
@@ -66,8 +75,26 @@ class EscenaMenu extends Phaser.Scene {
         this.botonDetectChat.setScale(0.1);
 
         this.botonDetectChat.on('pointerdown', function () {
+            menusfx.play();
+            
             this.scene.scene.start('LobbyScene');
-        })
+        });
+
+
+        //Musica
+        menu_music = this.sound.add('Menu_music');
+        menusfx = this.sound.add('menusfx');
+
+        var menu_musicConfig = {
+            mute: false,
+            volume: 1,
+            rate: 1,
+            detune: 0,
+            seek: 0,
+            loop: true,
+            delay: 0
+        };
+        menu_music.play(menu_musicConfig);
 
     }
 

@@ -1,3 +1,6 @@
+
+var menu_musicj1;
+var menusfx1;
 class EscenaFinalJ1 extends Phaser.Scene {
 
     constructor() {
@@ -23,6 +26,12 @@ class EscenaFinalJ1 extends Phaser.Scene {
 
     create() {
 
+
+        //MUSICA
+        menusfx1 = this.sound.add('menusfx');
+        menu_musicj1 = this.sound.add('Menu_music');
+        menu_musicj1.play();
+
         this.victoriaJ1 = this.add.image(400, 200, 'imagenVictoria');
         this.victoriaJ1.setScale(0.5);
 
@@ -39,6 +48,11 @@ class EscenaFinalJ1 extends Phaser.Scene {
 
         this.botonDetectReiniciar.on('pointerdown', function () {
             this.scene.scene.start('MenuScene');
+            //MUSICA
+            menusfx1 = this.sound.add('menusfx');
+            menu_musicj1 = this.sound.add('Menu_music');
+            menu_musicj1.play();
+
         })
 
         this.botonDetectReiniciar.on('pointerover', function () {

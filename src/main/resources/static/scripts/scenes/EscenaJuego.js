@@ -1,6 +1,12 @@
 /** @type { import ("../../typings/phaser") } */
 
 "use strict";
+
+var battle_Intro;
+var battle_Loop;
+var shoot_Sound;
+var hit_Sound;
+
 class EscenaJuego extends Phaser.Scene {
 
     constructor() {
@@ -91,7 +97,10 @@ class EscenaJuego extends Phaser.Scene {
         this.load.image('vidas rosa 1.5', 'assets/vidas rosa 1,5.png');
         this.load.image('vidas rosa 1', 'assets/vidas rosa 1.png');
 
-
+        this.load.audio('Battle_Intro', ['music/JER_Battle_Intro.mp3', 'music/JER_Battle_Intro.ogg']);
+        this.load.audio('Battle_Loop', ['music/JER_Battle_Loop.mp3', 'music/JER_Battle_Loop.ogg']);
+        this.load.audio('shoot_Sound','music/SFX/Disparar.mp3');
+        this.load.audio('hit_Sound','music/SFX/Impacto_Seta.mp3');
 
         //LUCIERNAGAS
         this.load.image('luciernaga', 'assets/Fire.png');
@@ -389,7 +398,22 @@ class EscenaJuego extends Phaser.Scene {
             depth: -2
         });
 
-
+        //MUSICA
+        battle_Intro = this.sound.add('Battle_Intro');
+        battle_Loop = this.sound.add('Battle_Loop');
+        shoot_Sound = this.sound.add('shoot_Sound');
+        hit_Sound = this.sound.add('hit_Sound');
+        var battle_musicConfig = {
+            mute: false,
+            volume: 1,
+            rate: 1,
+            detune: 0,
+            seek: 0,
+            loop: true,
+            delay: 8
+        };
+        battle_Intro.play();
+        battle_Loop.play(battle_musicConfig);
 
     }//function create
 
@@ -401,10 +425,12 @@ class EscenaJuego extends Phaser.Scene {
 
     shootdisparoP1(xpos, ypos, direc) {
         this.disparosP1.fireBalaP1(xpos, ypos, direc);
+        shoot_Sound.play();
     }
 
     shootdisparoP2(xpos, ypos, direc) {
         this.disparosP2.fireBalaP2(xpos, ypos, direc);
+        shoot_Sound.play();
     }
 
     update() {
@@ -482,6 +508,8 @@ class EscenaJuego extends Phaser.Scene {
             this.gameOver = false;
             this.vidasleft = 3;
             this.vidasright = 3;
+            battle_Loop.stop();
+            battle_Intro.stop();
     }
 
     VictoriaP2(){
@@ -489,6 +517,8 @@ class EscenaJuego extends Phaser.Scene {
             this.gameOver = false;
             this.vidasleft = 3;
             this.vidasright = 3;
+            battle_Loop.stop();
+            battle_Intro.stop();
     }
 
     VisualImpactoP1(){
