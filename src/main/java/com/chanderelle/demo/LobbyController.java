@@ -54,7 +54,7 @@ public class LobbyController {
 	public User newUser(@RequestBody User user) {
 
 		int id = nextId.getAndIncrement();
-		user.setId(id);
+		user.setID(id);
 		lobby.addUser(user);
 
 		return user;
@@ -77,7 +77,7 @@ public class LobbyController {
     @DeleteMapping("/{id}")
 	public ResponseEntity<User> deleteUser(@PathVariable int id) {
 		for(int j = 0; j < lobby.getUserList().size(); j++) {
-			if (id == lobby.getUserList().get(j).getId()) {
+			if (id == lobby.getUserList().get(j).getID()) {
 				User user = lobby.getUser(j);
 				lobby.getUserList().remove(j);
 				return new ResponseEntity<>(user, HttpStatus.OK);

@@ -2,6 +2,16 @@
 
 var menu_music;
 var menusfx;
+
+var crearPartidaBool = false;
+var startGame = false;
+var barrera = true;
+var ID_Partida = 0;
+var SoyJ1 = false;
+var J1_id = 10;
+var J2_id = 10;
+
+
 class EscenaMenu extends Phaser.Scene {
 	
     constructor() {
@@ -11,6 +21,7 @@ class EscenaMenu extends Phaser.Scene {
         this.botonDetect;
         this.botonDetectChat;
         this.botonChat;
+        this.startGame;
     }
 
     initialize() {
@@ -46,13 +57,9 @@ class EscenaMenu extends Phaser.Scene {
 
 
         this.botonDetect.on('pointerdown', function () {
-			prueba();
-    		console.log("He enviado petición para crear partida");
-            menusfx.play();
-            menu_music.stop();
-            this.scene.scene.launch('PauseScene');
-            this.scene.scene.launch('GameScene');
-            this.scene.scene.sleep('PauseScene');
+						
+		  
+            
         })
 
         this.botonDetect.on('pointerover', function () {
@@ -99,7 +106,18 @@ class EscenaMenu extends Phaser.Scene {
     }
 
     update() {
-
+			if ((crearPartidaBool == false) && (barrera == true)){
+    		  createGame();
+    		  console.log("He enviado petición para crear partida");
+    		  crearPartidaBool = true;
+    	  }
+    	  if (startGame == true){
+    	  	  menusfx.play();
+              menu_music.stop();
+              this.scene.scene.launch('PauseScene');
+              this.scene.scene.launch('GameScene');
+              this.scene.scene.sleep('PauseScene');
+    	  }
     }
 
 }
@@ -110,15 +128,16 @@ var socket = new WebSocket("ws://localhost:8080/chanderelle");
 function createGame() {
 	let message = {
 		ID: 0,
-		idJugador: 0,	
+		idJugador: J1_id,	
 	}	
-	console.log("hace cosas");
 	socket.send(JSON.stringify(message)); 
 }	
 
 function deleteGame() {
 	let message = {
 		ID: 1,	
+		idPartida: ID_Partida,
+		idJugador: J1_id,
 	}	
 	
 	socket.send(JSON.stringify(message)); 
@@ -154,7 +173,12 @@ socket.onmessage = function (event) {
 	switch(id){
 		
 		case(0):
-		console.log("Partida creada");
+		ID_Partida = msg.idPartida;//EJEMPLO if(aux.Estado) // EN SERVER ESTARIA msg.put("Estado", partidas.getId(idpartida).getVacio();
+		Soy_J1 = msg.soyJ1;
+		console.log("aux " + msg.soyJ1);
+		console.log("la buena " +Soy_J1);
+		console.log(msg.stringPrueba);
+		console.log(ID_Partida);
 		break;
 		
 		case(1): 
@@ -167,10 +191,10 @@ socket.onmessage = function (event) {
 		
 		case(4):
 		StartGame = msg.estadoPartida;
-		console.log(msg.estadoPartida);
-		
-		
+		console.log(msg.estadoPartida);		
+		console.log("El id jugador del server es:"+ msg.idJugador);		
 		break;
+		
 		case(10):
 		console.log("prueba superada")
 		break;

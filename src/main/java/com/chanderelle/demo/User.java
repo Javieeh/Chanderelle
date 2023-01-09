@@ -1,72 +1,51 @@
 package com.chanderelle.demo;
 
+import java.time.LocalDateTime;
+
 import org.springframework.web.socket.WebSocketSession;
 
 public class User {
-    private int id;
-	private String nick;
-	private WebSocketSession session;
-	private boolean playing;
-
-	public User(int id, WebSocketSession session) {
-		this.id = id;
-		this.nick = null;
-		this.session = session;
-		this.playing = false;
-	}
-
+	private int ID;
+	private WebSocketSession SESSION;
+	private LocalDateTime Tiempo;
+	private boolean inGame;
 	
 	
-	public int getId() {
-		return id;
+	 User(int id,  WebSocketSession session) { 
+		this.ID = id;
+		this.SESSION = session;
+		this.Tiempo = LocalDateTime.now();
+		this.inGame = false;
 	}
-
-
-
-	public void setId(int id) {
-		this.id = id;
+	 User() { 
+			this.Tiempo = LocalDateTime.now();
+			this.inGame = false;
 	}
-
-
-
-	public String getNick() {
-		return nick;
+	public int getID() {
+		return ID;
 	}
-
-
-
-	public void setNick(String nick) {
-		this.nick = nick;
+	public void setID(int iD) {
+		ID = iD;
 	}
-
-
-
-	public WebSocketSession getSession() {
-		return session;
+	public WebSocketSession getSESSION() {
+		return SESSION;
 	}
-
-
-
-	public void setSession(WebSocketSession session) {
-		this.session = session;
+	public void setSESSION(WebSocketSession sESSION) {
+		SESSION = sESSION;
 	}
-
-
-
-	public boolean isPlaying() {
-		return playing;
+	public LocalDateTime getTiempo() {
+		return Tiempo;
 	}
-
-
-
-	public void setPlaying(boolean playing) {
-		this.playing = playing;
+	public void setTiempo(LocalDateTime tiempo) {
+		Tiempo = tiempo;
 	}
-
-
-
-	@Override
-	public String toString() {
-		return "Jugador [id=" + this.id + ", nombre=" + this.nick + "]";
+	public boolean isInGame() {
+		return inGame;
 	}
+	public void setInGame(boolean inGame) {
+		this.inGame = inGame;
+	}
+	 
+	
+	
 }
