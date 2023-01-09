@@ -49,9 +49,7 @@ class EscenaFinalJ2 extends Phaser.Scene {
         this.botonDetectReiniciarJ2.on('pointerdown', function () {
             this.scene.scene.start('MenuScene');
             //MUSICA
-        menusfx2 = this.sound.add('menusfx');
-        menu_musicj2 = this.sound.add('Menu_music');
-        menu_musicj2.play();
+        menu_musicj2.stop();
         })
 
         this.botonDetectReiniciarJ2.on('pointerover', function () {

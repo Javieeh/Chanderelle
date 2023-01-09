@@ -11,12 +11,12 @@ const config = {
         default: 'arcade',
         arcade: {
             gravity: { y: 650 },
-            debug: true
+            debug: false,
         }
     },
     autoCenter: false,
 
-    scene: [EscenaMenu, EscenaJuego, EscenaPausa, EscenaFinalJ1, EscenaFinalJ2, EscenaLobby],
+    scene: [EscenaMenu, EscenaJuego, EscenaPausa, EscenaFinalJ1, EscenaFinalJ2, EscenaLobby, EscenaCarga],
 };//CONFIG
 
 const game = new Phaser.Game(config);
