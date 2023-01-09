@@ -26,18 +26,18 @@ class EscenaCarga extends Phaser.Scene {
     		  crearPartidaBool = true;
     	  }
     	  if (startGame == true){
-    	  	this.scene.scene.start("GameScene");
+    	  	this.scene.start("GameScene");
        }   	  
 	} 
 }
 
 var crearPartidaBool = false;
 var startGame = false;
-var barrera = true;
+var barrera = false;
 var ID_Partida = 0;
 var SoyJ1 = false;
-var J1_id = 10;
-var J2_id = 10;
+var J1_id;
+var J2_id;
 
 var socket = new WebSocket("ws://localhost:8080/chanderelle");
 
@@ -98,11 +98,17 @@ socket.onmessage = function (event) {
 		
 		case(0):
 		ID_Partida = msg.idPartida;//EJEMPLO if(aux.Estado) // EN SERVER ESTARIA msg.put("Estado", partidas.getId(idpartida).getVacio();
-		Soy_J1 = msg.soyJ1;
+		if (msg.soyJ1 == false) {
+			startGame = true;
+		} else {
+			Soy_J1 = msg.soyJ1;
 		console.log("aux " + msg.soyJ1);
 		console.log("la buena " +Soy_J1);
 		console.log(msg.stringPrueba);
 		console.log(ID_Partida);
+		}
+		
+		
 		break;
 		
 		case(1): 
@@ -123,7 +129,7 @@ socket.onmessage = function (event) {
 		J1_id = msg.idJugador;
 		
 		console.log(msg.mensaje);
-		console.log(msg.idJugador);
+		//console.log(msg.idJugador);
 		barrera= true;
 		break;
 		case(10):
