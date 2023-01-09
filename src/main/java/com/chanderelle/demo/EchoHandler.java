@@ -130,6 +130,10 @@ public class EchoHandler extends TextWebSocketHandler {
 				System.out.println("hola");
 			}
 			break;
+		case(10):
+			msg.put("idFuncion", 10);
+			session.sendMessage(new TextMessage(msg.toString()));
+			break;
 		}
 		
 	}

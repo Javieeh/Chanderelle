@@ -46,7 +46,7 @@ class EscenaMenu extends Phaser.Scene {
 
 
         this.botonDetect.on('pointerdown', function () {
-			createGame();
+			prueba();
     		console.log("He enviado petición para crear partida");
             menusfx.play();
             menu_music.stop();
@@ -150,7 +150,7 @@ socket.onopen = function() {
 //Manejamos lo que recibimos del servidor con un switch
 socket.onmessage = function (event) {
 	var msg = JSON.parse(event.data)
-	id = msg.ID
+	id = msg.idFuncion;
 	switch(id){
 		
 		case(0):
