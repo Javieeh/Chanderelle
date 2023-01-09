@@ -48,7 +48,7 @@ class EscenaMenu extends Phaser.Scene {
         this.botonDetect.on('pointerdown', function () {
 		  menusfx.play();
 		  menu_music.stop();
-		  createUser();				
+		  				
 		  this.scene.scene.start("LoadScene")
             
         })

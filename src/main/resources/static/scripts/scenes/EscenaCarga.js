@@ -8,6 +8,7 @@ class EscenaCarga extends Phaser.Scene {
     
     initialize() {
         Phaser.Scene.call(this, { key: 'LoadScene' });
+        
     }
     
     preload(){
@@ -15,6 +16,7 @@ class EscenaCarga extends Phaser.Scene {
     }
        
     create (){
+		createUser();
         this.fondo = this.add.image(400, 300, 'fondoMenu');
         this.fondo.setDepth(-1);
         this.fondo.setScale(0.5);
@@ -45,7 +47,7 @@ var socket = new WebSocket("ws://localhost:8080/chanderelle");
 function createGame() {
 	let message = {
 		ID: 0,
-		idJugador: J1_id,	
+		//idJugador: J1_id,	
 	}	
 	socket.send(JSON.stringify(message)); 
 }	
@@ -61,7 +63,7 @@ function deleteGame() {
 	let message = {
 		ID: 1,	
 		idPartida: ID_Partida,
-		idJugador: J1_id,
+		idJugador: ID_Jugador,
 	}	
 	
 	socket.send(JSON.stringify(message)); 
@@ -97,18 +99,14 @@ socket.onmessage = function (event) {
 	switch(id){
 		
 		case(0):
-		ID_Partida = msg.idPartida;//EJEMPLO if(aux.Estado) // EN SERVER ESTARIA msg.put("Estado", partidas.getId(idpartida).getVacio();
+		ID_Partida = msg.idPartida;
 		if (msg.soyJ1 == false) {
-			startGame = true;
-		} else {
-			Soy_J1 = msg.soyJ1;
-		console.log("aux " + msg.soyJ1);
-		console.log("la buena " +Soy_J1);
+			console.log("Los jugadores se han unido a la partida: " + ID_Partida);
+		} 
+		else {
+		Soy_J1 = msg.soyJ1;
 		console.log(msg.stringPrueba);
-		console.log(ID_Partida);
-		}
-		
-		
+		}	
 		break;
 		
 		case(1): 
@@ -120,16 +118,13 @@ socket.onmessage = function (event) {
 		break;
 		
 		case(4):
-		startGame = msg.estadoPartida;
-		console.log(msg.estadoPartida);		
-		console.log("El id jugador del server es:"+ msg.idJugador);		
+	
 		break;
 		
 		case(5):
-		J1_id = msg.idJugador;
 		
+		//J1_id = msg.idJugador;		
 		console.log(msg.mensaje);
-		//console.log(msg.idJugador);
 		barrera= true;
 		break;
 		case(10):

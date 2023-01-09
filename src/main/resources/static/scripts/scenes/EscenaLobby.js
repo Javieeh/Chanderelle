@@ -8,6 +8,7 @@ class EscenaLobby extends Phaser.Scene{
     
     constructor() {
         super("LobbyScene");
+        this.botonExitDetect;
     }
 
 	initialize() {
@@ -20,7 +21,20 @@ class EscenaLobby extends Phaser.Scene{
 
     create(){
 		
+		var botonE = this.add.image(0, 0, 'boton');
+        botonE.setScale(1);
+        botonE.setDepth(-500);
 
+        this.botonExitDetect = this.add.container(740, 600, [botonE]);
+        this.botonExitDetect.setSize(botonE.height, botonE.width);
+        this.botonExitDetect.setInteractive();
+        this.botonExitDetect.setScale(0.1);
+
+        this.botonExitDetect.on('pointerdown', function () {
+
+            this.scene.scene.start('MenuScene');
+
+        })
 		this.idOfExitedPlayer = 0;
 		this.returnKey =  this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
 		this.style = { font: "15px OCR A", fill: "#FFFFFF" };

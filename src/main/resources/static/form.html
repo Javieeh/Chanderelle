@@ -5,11 +5,13 @@
 </head>
 
 <body>
+    
+    </script>
     <style>
         .todoDiv {
             display: flex;
             width: 800px;
-            height: 480px;
+            height: 455px;
             position: relative;
             top: 110px;
             left: 0px;
@@ -25,7 +27,7 @@
             height: 600px;
             min-height: 600px;
             max-height: 600px;
-            
+
             margin: 0px;
             border: solid;
             color: white;
@@ -35,22 +37,35 @@
         }
 
         .lobbyDiv {
-            flex: 2; 
-  			table-layout:fixed;
-  			margin:0px;
-  			min-width: 380px;
-  			max-width: 380px;
-  			min-height:590px;
-  			max-height:590px;
-  			border: solid;
-  			padding:5px;
-  			color:white;
-  			background-color:rgba(152, 46, 194, 0.646);
-  			overflow:scroll;
+            flex: 2;
+            table-layout: fixed;
+            margin: 0px;
+            min-width: 380px;
+            max-width: 380px;
+            min-height: 590px;
+            max-height: 590px;
+            border: solid;
+            padding: 5px;
+            color: white;
+            background-color: rgb(118, 36, 151);
+            overflow: scroll;
         }
-        
+        .buttonExit{
+            position: absolute;
+            width: 100px;
+            height: 25px;
+            top: 560px;
+            left: 680px;
+        }
+        .buttonExitD{
+            width: 100px;
+            height: 25px;
+            font-weight: bolder;
+            font-size: 1.2rem;
+            text-align: center;
+        }
     </style>
-<script src="scriptchat.js"></script>
+    <script src="scriptchat.js"></script>
     <div class="todoDiv">
         <div class="chatDiv" id="input-form">
 
@@ -61,10 +76,11 @@
 
         </div>
 
-        <div class="lobbyDiv" id="info-players">
-
+        <div class="lobbyDiv" id="info-players"></div>
+        
+        <div class="buttonExit">
+            <button class="buttonExitD">SALIR</button> 
         </div>
-    </div>
 </body>
 
 </html>

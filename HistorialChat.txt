@@ -14,3 +14,4 @@ Jugador 6: dq
 Jugador 6: eqq
 Jugador 1: hola
 Jugador 2: hola 
+Jugador 0: hola

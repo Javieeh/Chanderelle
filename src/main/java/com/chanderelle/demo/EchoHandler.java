@@ -48,12 +48,12 @@ public class EchoHandler extends TextWebSocketHandler {
 			for (Game p: partidas){//Recorro mi lista por cada elemento partida
 				
 				if (!p.getHayJ1()) { //SI NO HAY J1 (es decir, no hay jugadores)
-					crearPartida(numPartidaActual, usuarios.get(idJug));
+					createGame(numPartidaActual, usuarios.get(idJug));
 					msg.put("soyJ1", true);
 					break;
 				}
 				else if(p.getVacio()) {
-					llenarPartida(f, usuarios.get(idJug), msg);
+					addJ2(f, usuarios.get(idJug), msg);
 					numPartidaActual++; //Aumento el número de partidas que existen
 					f = p;
 				    msg.put("soyJ1", false);
@@ -84,7 +84,7 @@ public class EchoHandler extends TextWebSocketHandler {
 		case(5):
 			System.out.print("prueba");
 			if(primeravez) {
-				inicializar();
+				initialize();
 				primeravez=false;
 			}
 			if (numJugadoresActual < N_JUGADORES) {
@@ -117,7 +117,7 @@ public class EchoHandler extends TextWebSocketHandler {
 		}
 	}
 	
-	public void crearPartida(int ID, User player){ //Creación de partidas
+	public void createGame(int ID, User player){ //Creación de partidas
 		player.setInGame(true);
 		Game p = new Game(ID, player); //Creo una partida por el constructor
 		p.setHayJ1(true); 
@@ -125,7 +125,7 @@ public class EchoHandler extends TextWebSocketHandler {
 		//System.err.println("He creado una nueva partida con id: "+ ID);
 	}
 	
-	public void llenarPartida(Game p, User J, ObjectNode msg){
+	public void addJ2(Game p, User J, ObjectNode msg){
 		J.setInGame(true);
 		p.setJ2(J); //Añado a la partida el jugador 2
 		p.setVacio(false); 
@@ -134,7 +134,7 @@ public class EchoHandler extends TextWebSocketHandler {
 		//System.err.println("He llenado la partida con id: "+ p.getId());
 	}
 	
-	public void inicializar() { // Cuando se inicie el server, lleno mi lista de partidas de elementos partida con valores por defecto para poder recorrer el for each de creación de partidas.
+	public void initialize() { // Cuando se inicie el server, lleno mi lista de partidas de elementos partida con valores por defecto para poder recorrer el for each de creación de partidas.
 		Game p = new Game();
 		for (int i = 0; i < N_PARTIDAS; i++) {
 			p.setID(i);
