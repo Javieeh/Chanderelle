@@ -9,6 +9,8 @@
 ###### -Laura Vázquez Pereda, l.vazquezp.2020@alumnos.urjc.es, lauravazquezz
 ###### -Daniel Maseda Padilla, d.maseda.2020@alumnos.urjc.es, DMasedaP
 ###### -Javier de las Peñas Fernández, j.delaspenas.2020@alumnos.urjc.es, Javieeh
+### Para jugarlo - Itch.io 
+###### https://lucasah.itch.io/chanderellethegame
 ### Trello
 ###### https://trello.com/w/chanderelle
 ### ESCENAS
