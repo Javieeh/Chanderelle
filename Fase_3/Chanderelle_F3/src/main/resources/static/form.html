@@ -1,0 +1,74 @@
+<html>
+
+<head>
+
+</head>
+
+<body>
+    
+    </script>
+    <style>
+        .todoDiv {
+            display: flex;
+            width: 800px;
+            height: 455px;
+            position: relative;
+            top: 110px;
+            left: 0px;
+
+        }
+
+        .chatDiv {
+            flex: 2;
+            table-layout: fixed;
+            width: 400px;
+            min-width: 400px;
+            max-width: 400px;
+            height: 600px;
+            min-height: 600px;
+            max-height: 600px;
+
+            margin: 0px;
+            border: solid;
+            color: white;
+            padding: 0px;
+            background-color: rgb(75, 35, 118);
+            overflow: scroll;
+        }
+
+        .lobbyDiv {
+            flex: 2;
+            table-layout: fixed;
+            margin: 0px;
+            min-width: 380px;
+            max-width: 380px;
+            min-height: 590px;
+            max-height: 590px;
+            border: solid;
+            padding: 5px;
+            color: white;
+            background-color: rgb(118, 36, 151);
+            overflow: scroll;
+        }      
+
+    </style>
+    <div class="todoDiv" id="TodoDiv">
+		
+        <div class="chatDiv" id="input-form">
+           
+            <div id="divDisconnect"  style="display: none;">
+			<input id="value-input" placeholder='Prueba a decir algo' type='text' name="name">
+            <button id="send-button">Enviar</button>
+            <button id="dis-button" onclick="Disconnect()">Desconectar</button>
+			</div>
+            <div id="chat" style="font-size: 20px;"></div>
+        </div>
+
+        <div class="lobbyDiv" id="info-players">
+			<input id="username-input" placeholder='Pon tu nombre' type='text' name="username">
+            <button id="button-connect">Conectar</button> 
+		</div>
+        
+</body>
+
+</html>
