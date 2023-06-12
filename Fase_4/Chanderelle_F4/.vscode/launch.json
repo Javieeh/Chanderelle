@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-ChanderelleV2Application<ChanderelleV2Application>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.chanderelle.demo.ChanderelleV2Application",
+            "projectName": "ChanderelleV2Application",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

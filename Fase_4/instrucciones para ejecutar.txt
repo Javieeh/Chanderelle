@@ -1,0 +1,16 @@
+Para ejecutar el archivo .jar, que se encuentra en la siguiente ruta:
+ ...\Chanderelle_F4\target\ChanderelleV2Application-F4
+hay dos maneras. 
+
+MANERA 1: 
+
+Doble click sobre el archivo. No aparece nada pero se habra lanzado la aplicacion en el puerto localhost:8080.
+Abrir el navegador, limpiar caché, y escribir en la barra de busqueda superior "localhost:8080". Si se quiere
+abrir en dos ventanas, en la segunda se pone la misma dirección.
+
+MANERA 2:
+
+Pulsar shift + click-izquierdo en la ubicacion del archivo, y elegir la opción "abrir la ventana de pwershell aqui".
+Una vez abierta la consola, escribir el siguiente comando: -java jar 'ruta/nombre-del-archivo.jar'.
+
+En los dos casos es importante que no haya ninguna aplicacion el puerto localhost:8080
